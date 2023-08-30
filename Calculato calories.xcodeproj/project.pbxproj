@@ -9,21 +9,25 @@
 /* Begin PBXBuildFile section */
 		60C7D6692A9F58EE004C31F3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60C7D6682A9F58EE004C31F3 /* AppDelegate.swift */; };
 		60C7D66B2A9F58EE004C31F3 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60C7D66A2A9F58EE004C31F3 /* SceneDelegate.swift */; };
-		60C7D66D2A9F58EE004C31F3 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60C7D66C2A9F58EE004C31F3 /* ViewController.swift */; };
+		60C7D66D2A9F58EE004C31F3 /* CalculateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60C7D66C2A9F58EE004C31F3 /* CalculateViewController.swift */; };
 		60C7D6702A9F58EE004C31F3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 60C7D66E2A9F58EE004C31F3 /* Main.storyboard */; };
 		60C7D6722A9F58EF004C31F3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 60C7D6712A9F58EF004C31F3 /* Assets.xcassets */; };
 		60C7D6752A9F58EF004C31F3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 60C7D6732A9F58EF004C31F3 /* LaunchScreen.storyboard */; };
+		60C7D67D2A9F7E47004C31F3 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60C7D67C2A9F7E47004C31F3 /* ProfileViewController.swift */; };
+		60C7D67F2A9F83A0004C31F3 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60C7D67E2A9F83A0004C31F3 /* TabBarViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		60C7D6652A9F58EE004C31F3 /* Calculato calories.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Calculato calories.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		60C7D6682A9F58EE004C31F3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		60C7D66A2A9F58EE004C31F3 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		60C7D66C2A9F58EE004C31F3 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		60C7D66C2A9F58EE004C31F3 /* CalculateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculateViewController.swift; sourceTree = "<group>"; };
 		60C7D66F2A9F58EE004C31F3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		60C7D6712A9F58EF004C31F3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		60C7D6742A9F58EF004C31F3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		60C7D6762A9F58EF004C31F3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		60C7D67C2A9F7E47004C31F3 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		60C7D67E2A9F83A0004C31F3 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,15 +60,49 @@
 		60C7D6672A9F58EE004C31F3 /* Calculato calories */ = {
 			isa = PBXGroup;
 			children = (
-				60C7D6682A9F58EE004C31F3 /* AppDelegate.swift */,
-				60C7D66A2A9F58EE004C31F3 /* SceneDelegate.swift */,
-				60C7D66C2A9F58EE004C31F3 /* ViewController.swift */,
-				60C7D66E2A9F58EE004C31F3 /* Main.storyboard */,
-				60C7D6712A9F58EF004C31F3 /* Assets.xcassets */,
-				60C7D6732A9F58EF004C31F3 /* LaunchScreen.storyboard */,
-				60C7D6762A9F58EF004C31F3 /* Info.plist */,
+				60C7D6802A9F91DA004C31F3 /* ViewControllers */,
+				60C7D6812A9F9284004C31F3 /* StoryBoards */,
+				60C7D6822A9F929F004C31F3 /* App */,
+				60C7D6832A9F92AD004C31F3 /* Resources */,
 			);
 			path = "Calculato calories";
+			sourceTree = "<group>";
+		};
+		60C7D6802A9F91DA004C31F3 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				60C7D67C2A9F7E47004C31F3 /* ProfileViewController.swift */,
+				60C7D66C2A9F58EE004C31F3 /* CalculateViewController.swift */,
+				60C7D67E2A9F83A0004C31F3 /* TabBarViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		60C7D6812A9F9284004C31F3 /* StoryBoards */ = {
+			isa = PBXGroup;
+			children = (
+				60C7D66E2A9F58EE004C31F3 /* Main.storyboard */,
+				60C7D6732A9F58EF004C31F3 /* LaunchScreen.storyboard */,
+			);
+			path = StoryBoards;
+			sourceTree = "<group>";
+		};
+		60C7D6822A9F929F004C31F3 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				60C7D6682A9F58EE004C31F3 /* AppDelegate.swift */,
+				60C7D66A2A9F58EE004C31F3 /* SceneDelegate.swift */,
+				60C7D6762A9F58EF004C31F3 /* Info.plist */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		60C7D6832A9F92AD004C31F3 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				60C7D6712A9F58EF004C31F3 /* Assets.xcassets */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -138,8 +176,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				60C7D66D2A9F58EE004C31F3 /* ViewController.swift in Sources */,
+				60C7D66D2A9F58EE004C31F3 /* CalculateViewController.swift in Sources */,
 				60C7D6692A9F58EE004C31F3 /* AppDelegate.swift in Sources */,
+				60C7D67D2A9F7E47004C31F3 /* ProfileViewController.swift in Sources */,
+				60C7D67F2A9F83A0004C31F3 /* TabBarViewController.swift in Sources */,
 				60C7D66B2A9F58EE004C31F3 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -289,7 +329,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = FVQZR7MUR6;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "Calculato calories/Info.plist";
+				INFOPLIST_FILE = "Calculato calories/App/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -320,7 +360,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = FVQZR7MUR6;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "Calculato calories/Info.plist";
+				INFOPLIST_FILE = "Calculato calories/App/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;

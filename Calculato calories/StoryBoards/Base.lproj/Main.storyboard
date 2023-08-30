@@ -1,50 +1,52 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
-    <device id="retina6_12" orientation="portrait" appearance="dark"/>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="JKG-Gs-MLI">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21679"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
-        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="UIMenu" message="Requires Xcode 11 or later." minToolsVersion="11.0" requiredIntegratedClassName="UICommandDiff"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Калькулятор-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Calculato_calories" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="CalculateViewController" customModule="Calculato_calories" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="X5r-AZ-dmV">
-                                <rect key="frame" x="16" y="221.33333333333334" width="361" height="409.33333333333326"/>
+                                <rect key="frame" x="16" y="233.33333333333334" width="361" height="409.66666666666663"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="IfI-I2-IzR">
-                                        <rect key="frame" x="0.0" y="0.0" width="361" height="176.33333333333334"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="361" height="176.66666666666666"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gTA-YG-rfE">
-                                                <rect key="frame" x="0.0" y="0.0" width="176.66666666666666" height="176.33333333333334"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="176.66666666666666" height="176.66666666666666"/>
+                                                <color key="tintColor" name="AccentColor"/>
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="filled" title="М">
                                                     <fontDescription key="titleFontDescription" style="UICTFontTextStyleTitle0"/>
                                                 </buttonConfiguration>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mU0-eF-fyq">
-                                                <rect key="frame" x="184.66666666666663" y="0.0" width="176.33333333333337" height="176.33333333333334"/>
+                                                <rect key="frame" x="184.66666666666663" y="0.0" width="176.33333333333337" height="176.66666666666666"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="mU0-eF-fyq" secondAttribute="height" multiplier="1:1" id="tCi-8r-Hqg"/>
                                                 </constraints>
+                                                <color key="tintColor" red="1" green="0.69595252519999995" blue="0.71011374719999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="filled" title="Ж">
                                                     <fontDescription key="titleFontDescription" style="UICTFontTextStyleTitle0"/>
+                                                    <color key="baseBackgroundColor" red="0.8879813762626263" green="0.37452375273896804" blue="0.80122911938932162" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                 </buttonConfiguration>
                                             </button>
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="7Pe-T5-h0w">
-                                        <rect key="frame" x="0.0" y="196.33333333333334" width="361" height="62.333333333333343"/>
+                                        <rect key="frame" x="0.0" y="196.66666666666666" width="361" height="62.333333333333343"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="3Un-Pd-Gqh">
                                                 <rect key="frame" x="0.0" y="0.0" width="109.66666666666667" height="62.333333333333336"/>
@@ -97,7 +99,7 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="c8M-nD-t2e">
-                                        <rect key="frame" x="0.0" y="278.66666666666663" width="361" height="130.66666666666663"/>
+                                        <rect key="frame" x="0.0" y="279" width="361" height="130.66666666666663"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Физическая активность:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Uyy-eW-eya">
                                                 <rect key="frame" x="0.0" y="0.0" width="361" height="20.333333333333332"/>
@@ -106,18 +108,18 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" showsMenuAsPrimaryAction="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="phV-th-l9N">
-                                                <rect key="frame" x="0.0" y="28.333333333333371" width="361" height="33"/>
+                                                <rect key="frame" x="0.0" y="28.333333333333258" width="361" height="33"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <menu key="menu" identifier="currentActivity" id="tnb-Ld-Fmm">
                                                     <children>
                                                         <command title="Не тренируюсь" id="vOv-WK-lZT"/>
-                                                        <command title="1-2 тренировки в неделю" id="rrn-Ut-k91"/>
+                                                        <command title="1-2 тренировки в неделю" discoverabilityTitle="" id="rrn-Ut-k91"/>
                                                     </children>
                                                 </menu>
                                                 <state key="normal" title="Выберите вариант"/>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Текущая цель:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vks-2H-fQZ">
-                                                <rect key="frame" x="0.0" y="69.333333333333371" width="361" height="20.333333333333329"/>
+                                                <rect key="frame" x="0.0" y="69.333333333333258" width="361" height="20.333333333333329"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -138,29 +140,121 @@
                                 </subviews>
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h0G-ZT-Yep">
-                                <rect key="frame" x="139.33333333333334" y="763.66666666666663" width="114.66666666666666" height="34.333333333333371"/>
+                                <rect key="frame" x="139.33333333333334" y="693" width="114.66666666666666" height="34.333333333333371"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="filled" title="Рассчитать"/>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
-                        <color key="backgroundColor" systemColor="systemGray2Color"/>
+                        <color key="backgroundColor" red="1" green="0.65129582072375913" blue="0.77330035214585358" alpha="0.9017228890728477" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="X5r-AZ-dmV" secondAttribute="trailing" constant="16" id="1e1-Yk-3r9"/>
-                            <constraint firstItem="X5r-AZ-dmV" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="ECg-pk-nFs"/>
-                            <constraint firstItem="h0G-ZT-Yep" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="ISy-85-cQR"/>
-                            <constraint firstItem="X5r-AZ-dmV" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="jyh-II-OsL"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="h0G-ZT-Yep" secondAttribute="bottom" constant="20" id="uPM-8K-Lt8"/>
+                            <constraint firstItem="h0G-ZT-Yep" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" multiplier="5:3" id="O00-L3-ocy"/>
+                            <constraint firstItem="h0G-ZT-Yep" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="SIM-FW-kZS"/>
+                            <constraint firstItem="X5r-AZ-dmV" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="YpG-hi-UE0"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="X5r-AZ-dmV" secondAttribute="trailing" constant="16" id="hRI-6z-FdR"/>
+                            <constraint firstItem="h0G-ZT-Yep" firstAttribute="top" secondItem="X5r-AZ-dmV" secondAttribute="bottom" constant="50" id="yxh-os-EVB"/>
                         </constraints>
                     </view>
+                    <tabBarItem key="tabBarItem" title="Калькулятор" image="scalemass.fill" catalog="system" id="bu7-0w-ce1">
+                        <color key="badgeColor" name="AccentColor"/>
+                    </tabBarItem>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="874.88372093023258" y="2.5751072961373391"/>
+            <point key="canvasLocation" x="1746" y="347"/>
+        </scene>
+        <!--Профиль-->
+        <scene sceneID="QLT-xa-ETm">
+            <objects>
+                <viewController id="6Vh-JN-aFo" customClass="ProfileViewController" customModule="Calculato_calories" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="J2y-BQ-I0h" customClass="Pro">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="E0H-fD-E6w">
+                                <rect key="frame" x="16" y="178.66666666666666" width="361" height="69"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Z30-DI-ARx">
+                                        <rect key="frame" x="0.0" y="0.0" width="130" height="69"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="BMR:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W7D-X6-c6J">
+                                                <rect key="frame" x="0.0" y="0.0" width="130" height="20.333333333333332"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Объем ккал. под вашу цель:" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R9M-Zw-kOr">
+                                                <rect key="frame" x="0.0" y="28.333333333333339" width="130" height="40.666666666666657"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="130" id="Lcg-i5-Tb0"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="28" translatesAutoresizingMaskIntoConstraints="NO" id="Mbt-IX-RD9">
+                                        <rect key="frame" x="160" y="0.0" width="201" height="69"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="CXe-AI-GdN">
+                                                <rect key="frame" x="0.0" y="0.0" width="201" height="20.333333333333332"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="Ecw-9S-Pcb">
+                                                <rect key="frame" x="0.0" y="48.333333333333343" width="201" height="20.666666666666671"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="CkT-R4-4lb"/>
+                        <color key="backgroundColor" red="1" green="0.65129582070000003" blue="0.77330035210000003" alpha="0.90172288909999998" colorSpace="custom" customColorSpace="displayP3"/>
+                        <constraints>
+                            <constraint firstItem="E0H-fD-E6w" firstAttribute="leading" secondItem="CkT-R4-4lb" secondAttribute="leading" constant="16" id="GJL-eb-b4x"/>
+                            <constraint firstItem="E0H-fD-E6w" firstAttribute="centerY" secondItem="J2y-BQ-I0h" secondAttribute="centerY" multiplier="0.5" id="P4E-Ar-7cG"/>
+                            <constraint firstItem="CkT-R4-4lb" firstAttribute="trailing" secondItem="E0H-fD-E6w" secondAttribute="trailing" constant="16" id="eT8-QR-DiA"/>
+                        </constraints>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Профиль" image="person.fill" catalog="system" id="vEc-4i-O40">
+                        <color key="badgeColor" name="AccentColor"/>
+                    </tabBarItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5rp-r0-yyr" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1745.8015267175572" y="-341.54929577464793"/>
+        </scene>
+        <!--Tab Bar View Controller-->
+        <scene sceneID="IlQ-3i-iP3">
+            <objects>
+                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="JKG-Gs-MLI" customClass="TabBarViewController" customModule="Calculato_calories" customModuleProvider="target" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="9W0-YY-zZA">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" name="AccentColor"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="6Vh-JN-aFo" kind="relationship" relationship="viewControllers" id="rru-W6-JXg"/>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="viewControllers" id="wZp-gN-9na"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="PQb-Mj-x3A" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="964" y="1"/>
         </scene>
     </scenes>
     <resources>
-        <systemColor name="systemGray2Color">
-            <color red="0.68235294117647061" green="0.68235294117647061" blue="0.69803921568627447" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
+        <image name="person.fill" catalog="system" width="128" height="120"/>
+        <image name="scalemass.fill" catalog="system" width="128" height="121"/>
+        <namedColor name="AccentColor">
+            <color red="0.0" green="0.46000000000000002" blue="0.89000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
     </resources>
 </document>
