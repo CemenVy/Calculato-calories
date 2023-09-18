@@ -9,11 +9,8 @@ import Foundation
 
 struct Calculator {
     let person: Person
-    let bMR: BMR
     
-    static func getCalculator() -> Double {
-        
-        let person = Person.getPerson()
+    func getCalculator() -> Double {
         
         var genderCoefficient = 0.0
         var weightCoefficient = 0.0
@@ -47,15 +44,15 @@ struct Person {
     var growth: Double
     var weight: Double
     
-    static func getPerson() -> Person {
-        Person(gender: .male,
-               goal: .gainWeight,
-               levelActivity: .low,
-               age: 27,
-               growth: 180,
-               weight: 70
-        )
+    init(gender: Gender, goal: Goal, levelActivity: Activity, age: Double, growth: Double, weight: Double) {
+        self.gender = gender
+        self.goal = goal
+        self.levelActivity = levelActivity
+        self.age = age
+        self.growth = growth
+        self.weight = weight
     }
+
 }
 
 enum BMR: Double {
@@ -67,7 +64,7 @@ enum BMR: Double {
     case femaleGrowthCoefficient = 1.8
     case femaleAgeCoefficient = 4.7
     case femaleBaseCoefficient = 655
-
+    
 }
 
 enum Gender {
@@ -75,16 +72,40 @@ enum Gender {
     case female
 }
 
-enum Activity: Double {
+enum Activity: Double, CaseIterable {
     case low = 1.2
     case lowPlus = 1.375
     case medium = 1.55
     case high = 1.725
+    
+    var definition: String {
+        switch self {
+        case .low:
+            return "Не тренируюсь"
+        case .lowPlus:
+            return "Редко тренируюсь"
+        case .medium:
+            return "Регулярно тренируюсь"
+        case .high:
+            return "Профессиональный спортсмен"
+        }
+    }
 }
 
-enum Goal: Double {
+enum Goal: Double, CaseIterable {
     case keepInShape = 0.8
     case reduceWeight = 1.0
     case gainWeight = 1.2
+    
+    var definition: String {
+        switch self {
+        case .keepInShape:
+            return "Уменьшить вес"
+        case .reduceWeight:
+            return "Сохранить текущий вес"
+        case .gainWeight:
+            return "Набрать вес"
+        }
+    }
 }
 
