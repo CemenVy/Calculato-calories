@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		603597772A9FAE9400696F77 /* Calculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 603597762A9FAE9400696F77 /* Calculator.swift */; };
 		60C7D6692A9F58EE004C31F3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60C7D6682A9F58EE004C31F3 /* AppDelegate.swift */; };
 		60C7D66B2A9F58EE004C31F3 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60C7D66A2A9F58EE004C31F3 /* SceneDelegate.swift */; };
 		60C7D66D2A9F58EE004C31F3 /* CalculateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60C7D66C2A9F58EE004C31F3 /* CalculateViewController.swift */; };
@@ -18,6 +19,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		603597762A9FAE9400696F77 /* Calculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Calculator.swift; sourceTree = "<group>"; };
 		60C7D6652A9F58EE004C31F3 /* Calculato calories.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Calculato calories.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		60C7D6682A9F58EE004C31F3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		60C7D66A2A9F58EE004C31F3 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -41,6 +43,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		603597752A9FADB700696F77 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				603597762A9FAE9400696F77 /* Calculator.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		60C7D65C2A9F58EE004C31F3 = {
 			isa = PBXGroup;
 			children = (
@@ -61,6 +71,7 @@
 			isa = PBXGroup;
 			children = (
 				60C7D6802A9F91DA004C31F3 /* ViewControllers */,
+				603597752A9FADB700696F77 /* Models */,
 				60C7D6812A9F9284004C31F3 /* StoryBoards */,
 				60C7D6822A9F929F004C31F3 /* App */,
 				60C7D6832A9F92AD004C31F3 /* Resources */,
@@ -181,6 +192,7 @@
 				60C7D67D2A9F7E47004C31F3 /* ProfileViewController.swift in Sources */,
 				60C7D67F2A9F83A0004C31F3 /* TabBarViewController.swift in Sources */,
 				60C7D66B2A9F58EE004C31F3 /* SceneDelegate.swift in Sources */,
+				603597772A9FAE9400696F77 /* Calculator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
