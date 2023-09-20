@@ -15,6 +15,11 @@ enum CurrentMenu {
 final class CalculateViewController: UIViewController {
     
     // MARK: - IB Outlets
+    
+    @IBOutlet var bMRLabel: UILabel!
+    @IBOutlet var bMRForAcivityLabel: UILabel!
+    @IBOutlet var bMRForGoal: UILabel!
+    
     @IBOutlet var maleButton: UIButton!
     @IBOutlet var femaleButton: UIButton!
     
@@ -148,8 +153,13 @@ final class CalculateViewController: UIViewController {
         
         // Выполняем расчет
         let result = calculator.getCalculator()
+        
+        bMRLabel.text = String(format: "%.0f", result.levelBasalMetabolic)
+        bMRForAcivityLabel.text = String(format: "%.0f", result.levelBMRForYourActivity)
+        bMRForGoal.text = String(format: "%.0f", result.levelBMRForYourGoal)
         print(result)
     }
+    
 }
 
 // MARK: - UI Text Field Delegate
