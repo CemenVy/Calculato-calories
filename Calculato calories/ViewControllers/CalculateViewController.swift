@@ -14,6 +14,7 @@ enum CurrentMenu {
 
 final class CalculateViewController: UIViewController {
     
+    // MARK: - IB Outlets
     @IBOutlet var maleButton: UIButton!
     @IBOutlet var femaleButton: UIButton!
     
@@ -24,13 +25,15 @@ final class CalculateViewController: UIViewController {
     @IBOutlet var levelActivityMenu: UIButton!
     @IBOutlet var goalMenu: UIButton!
     
-    private var person:Person!
+    // MARK: - Private Properties
+    private var person = Person(gender: .male, goal: .gainWeight, levelActivity: .high, age: 0, growth: 0, weight: 0)
     
     private let buttonOn: CGFloat = 1
     private let buttonOf: CGFloat = 0.3
     
     private var currentMenu: CurrentMenu = .activityMenu
     
+    // MARK: - View Life Cycles
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -40,8 +43,10 @@ final class CalculateViewController: UIViewController {
         
         levelActivityMenu.layer.cornerRadius = 10
         goalMenu.layer.cornerRadius = 10
+        
     }
-    
+
+    // MARK: - Private Methods
     private func createMenu(for currentMenu: CurrentMenu) -> UIMenu? {
         let menuTitle = "Выберите вариант"
         var actions: [UIAction] = []
@@ -51,14 +56,14 @@ final class CalculateViewController: UIViewController {
             actions = Activity.allCases.map { activity in
                 UIAction(title: activity.definition) { [weak self] _ in
                     self?.levelActivityMenu.setTitle(activity.definition, for: .normal)
-                    self?.person?.levelActivity = activity
+                    self?.updatePerson(levelActivity: activity)
                 }
             }
         case .goalMenu:
             actions = Goal.allCases.map { goal in
                 UIAction(title: goal.definition) { [weak self] _ in
                     self?.goalMenu.setTitle(goal.definition, for: .normal)
-                    self?.person.goal = goal
+                    self?.updatePerson(goal: goal)
                 }
             }
         }
@@ -74,19 +79,44 @@ final class CalculateViewController: UIViewController {
         present(alert,animated: true)
     }
     
+    // MARK: - IB Actions
     @IBAction func chooseGenderDidTapped(_ sender: UIButton) {
+        var newGender: Gender? = nil
+        
         switch sender {
         case maleButton:
-            person.gender = .male
             femaleButton.alpha = buttonOf
             maleButton.alpha = buttonOn
+            newGender = .male
+            updatePerson(gender: newGender)
         default:
-            person.gender = .female
             maleButton.alpha = buttonOf
             femaleButton.alpha = buttonOn
+            newGender = .female
+            updatePerson(gender: newGender)
         }
     }
-    
+    private func updatePerson(gender: Gender? = nil, goal: Goal? = nil, levelActivity: Activity? = nil, age: Double? = nil, growth: Double? = nil, weight: Double? = nil) {
+        if let gender = gender {
+            person.gender = gender
+        }
+        if let goal = goal {
+            person.goal = goal
+        }
+        if let levelActivity = levelActivity {
+            person.levelActivity = levelActivity
+        }
+        if let age = age {
+            person.age = age
+        }
+        if let growth = growth {
+            person.growth = growth
+        }
+        if let weight = weight {
+            person.weight = weight
+        }
+    }
+        
     @IBAction func chooseLevelActivityDidTapped(_ sender: UIButton) {
         sender.menu = createMenu(for: .activityMenu)
         
@@ -97,9 +127,32 @@ final class CalculateViewController: UIViewController {
     }
     
     @IBAction func calculateButtonDidTapped(_ sender: UIButton) {
+
+        
+//        Проверяем, выбраны ли цель и активность
+//        guard let selectedGoal = person.goal else {
+//            showAlert(with: "Ошибка", andMessage: "Пожалуйста, выберите цель перед расчетом.")
+//            return
+//       }
+//        guard let selectedActivity = person.levelActivity else {
+//            showAlert(with: "Ошибка", andMessage: "Пожалуйста, выберите уровень активности перед расчетом.")
+//            return
+//        }
+//        guard let selectedGender = person.gender else {
+//            showAlert(with: "Ошибка", andMessage: "Пожалуйста, выберите пол перед расчетом.")
+//            return
+//        }
+        
+        // Создаем объект Calculator с новым Person
+        let calculator = Calculator(person: person)
+        
+        // Выполняем расчет
+        let result = calculator.getCalculator()
+        print(result)
     }
 }
 
+// MARK: - UI Text Field Delegate
 extension CalculateViewController: UITextFieldDelegate {
     func resignFirstResponder(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
@@ -120,11 +173,11 @@ extension CalculateViewController: UITextFieldDelegate {
         
         switch textField {
         case ageTextField:
-            person.age = correctValue
+            updatePerson(age: correctValue)
         case weightTextField:
-            person.weight = correctValue
+            updatePerson(weight: correctValue)
         default:
-            person.growth = correctValue
+            updatePerson(growth: correctValue)
         }
     }
     

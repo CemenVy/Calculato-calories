@@ -8,32 +8,51 @@
 import Foundation
 
 struct Calculator {
-    let person: Person
+    var person: Person
     
-    func getCalculator() -> Double {
+    func getCalculator() -> CalculatorResult {
+        
+        var bMR = 0.0
+        var levelBMRForYourGoal = 0.0
         
         var genderCoefficient = 0.0
-        var weightCoefficient = 0.0
-        var growthCoefficient = 0.0
-        var ageCoefficient = 0.0
+        let weightCoefficient = BMR.weightCoefficient.rawValue
+        let heightCoefficient = BMR.heightCoefficient.rawValue
+        let ageCoefficient = BMR.ageCoefficient.rawValue
         
         switch person.gender {
         case .male:
-            genderCoefficient = BMR.maleBaseCoefficient.rawValue
-            weightCoefficient = BMR.maleWeightCoefficient.rawValue
-            growthCoefficient = BMR.maleGrowthCoefficient.rawValue
-            ageCoefficient = BMR.maleAgeCoefficient.rawValue
+            genderCoefficient = Gender.male.rawValue
+            bMR = weightCoefficient * person.weight + heightCoefficient * person.growth - ageCoefficient * person.age + genderCoefficient
         case .female:
-            genderCoefficient = BMR.femaleBaseCoefficient.rawValue
-            weightCoefficient = BMR.femaleWeightCoefficient.rawValue
-            growthCoefficient = BMR.femaleGrowthCoefficient.rawValue
-            ageCoefficient = BMR.femaleAgeCoefficient.rawValue
+            genderCoefficient = Gender.female.rawValue
+            bMR = weightCoefficient * person.weight + heightCoefficient * person.growth - ageCoefficient * person.age - genderCoefficient
         }
         
-        let levelBasalMetabolic = genderCoefficient + (weightCoefficient * person.weight) + (growthCoefficient * person.growth) + (ageCoefficient * person.age)
+        let levelBMRForYourActivity =  bMR * person.levelActivity.rawValue
         
-        return levelBasalMetabolic
+        
+        switch person.goal {
+        case .saveWeight:
+            levelBMRForYourGoal = levelBMRForYourActivity
+        case .reduceWeight:
+            levelBMRForYourGoal = levelBMRForYourActivity - (levelBMRForYourActivity * person.goal.rawValue)
+        case .gainWeight:
+            levelBMRForYourGoal = levelBMRForYourActivity * person.goal.rawValue
+        }
+        
+        return CalculatorResult(
+            levelBasalMetabolic: bMR,
+            levelBMRForYourActivity: levelBMRForYourActivity,
+            levelBMRForYourGoal: levelBMRForYourGoal
+        )
     }
+}
+
+struct CalculatorResult{
+    let levelBasalMetabolic: Double
+    let levelBMRForYourActivity: Double
+    let levelBMRForYourGoal: Double
 }
 
 struct Person {
@@ -44,65 +63,57 @@ struct Person {
     var growth: Double
     var weight: Double
     
-    init(gender: Gender, goal: Goal, levelActivity: Activity, age: Double, growth: Double, weight: Double) {
-        self.gender = gender
-        self.goal = goal
-        self.levelActivity = levelActivity
-        self.age = age
-        self.growth = growth
-        self.weight = weight
-    }
-
+    mutating func update(gender: Gender, goal: Goal, levelActivity: Activity, age: Double, growth: Double, weight: Double) {
+           self.gender = gender
+           self.goal = goal
+           self.levelActivity = levelActivity
+           self.age = age
+           self.growth = growth
+           self.weight = weight
+       }
+    
+ 
 }
 
 enum BMR: Double {
-    case maleWeightCoefficient = 13.7
-    case maleGrowthCoefficient = 5.0
-    case maleAgeCoefficient = 6.8
-    case maleBaseCoefficient = 66
-    case femaleWeightCoefficient = 9.6
-    case femaleGrowthCoefficient = 1.8
-    case femaleAgeCoefficient = 4.7
-    case femaleBaseCoefficient = 655
-    
+    case weightCoefficient = 10
+    case heightCoefficient = 6.25
+    case ageCoefficient = 5
 }
 
-enum Gender {
-    case male
-    case female
+enum Gender: Double {
+    case male = 5
+    case female = 161
 }
 
 enum Activity: Double, CaseIterable {
     case low = 1.2
-    case lowPlus = 1.375
-    case medium = 1.55
-    case high = 1.725
+    case medium = 1.375
+    case high = 1.465
     
     var definition: String {
         switch self {
         case .low:
-            return "Не тренируюсь"
-        case .lowPlus:
-            return "Редко тренируюсь"
+            return "Cовсем нет физических нагрузок"
         case .medium:
-            return "Регулярно тренируюсь"
+            return "Тренируюсь 1-3 раза/неделю"
         case .high:
-            return "Профессиональный спортсмен"
+            return "Тренируюсь 4-5 раз/неделю"
         }
     }
 }
 
 enum Goal: Double, CaseIterable {
-    case keepInShape = 0.8
-    case reduceWeight = 1.0
-    case gainWeight = 1.2
+    case saveWeight = 0.0
+    case reduceWeight = 0.20
+    case gainWeight = 1.20
     
     var definition: String {
         switch self {
-        case .keepInShape:
-            return "Уменьшить вес"
-        case .reduceWeight:
+        case .saveWeight:
             return "Сохранить текущий вес"
+        case .reduceWeight:
+            return "Уменьшить вес"
         case .gainWeight:
             return "Набрать вес"
         }
