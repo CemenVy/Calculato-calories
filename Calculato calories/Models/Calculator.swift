@@ -8,7 +8,7 @@
 import Foundation
 
 struct Calculator {
-    var person: Person
+    let person: Person
     
     func getCalculator() -> CalculatorResult {
         
@@ -56,12 +56,18 @@ struct CalculatorResult{
 }
 
 struct Person {
+    var name: String
+    var surname: String
     var gender: Gender
     var goal: Goal
     var levelActivity: Activity
     var age: Double
     var growth: Double
     var weight: Double
+    
+    var fullname: String {
+        "\(name) \(surname)"
+    }
     
     mutating func update(gender: Gender, goal: Goal, levelActivity: Activity, age: Double, growth: Double, weight: Double) {
            self.gender = gender

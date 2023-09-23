@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="KfV-Kk-jR2">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="zfL-1d-oR0">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21679"/>
@@ -28,7 +28,7 @@
                                                     <textField opaque="NO" alpha="0.5" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="0.0" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Cmi-dU-Jql">
                                                         <rect key="frame" x="0.0" y="0.0" width="115" height="31.666666666666668"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="25"/>
-                                                        <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="decimalPad" enablesReturnKeyAutomatically="YES" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
+                                                        <textInputTraits key="textInputTraits" keyboardType="decimalPad" returnKeyType="done"/>
                                                     </textField>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Возраст" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="m7P-Tq-XQw">
                                                         <rect key="frame" x="0.0" y="39.666666666666629" width="115" height="18"/>
@@ -44,7 +44,7 @@
                                                     <textField opaque="NO" alpha="0.5" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="0.0" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="06K-oW-h5P">
                                                         <rect key="frame" x="0.0" y="0.0" width="115" height="31.666666666666668"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="25"/>
-                                                        <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="decimalPad" enablesReturnKeyAutomatically="YES" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
+                                                        <textInputTraits key="textInputTraits" keyboardType="decimalPad" returnKeyType="done"/>
                                                     </textField>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Вес, кг." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="veA-9n-sdf">
                                                         <rect key="frame" x="0.0" y="39.666666666666629" width="115" height="18"/>
@@ -60,7 +60,7 @@
                                                     <textField opaque="NO" alpha="0.5" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="0.0" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="yzG-P4-KYv">
                                                         <rect key="frame" x="0.0" y="0.0" width="115" height="31.666666666666668"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="25"/>
-                                                        <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="decimalPad" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
+                                                        <textInputTraits key="textInputTraits" keyboardType="decimalPad" returnKeyType="done"/>
                                                     </textField>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Рост, см." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="Rxk-Wy-rxP">
                                                         <rect key="frame" x="0.0" y="39.666666666666629" width="115" height="18"/>
@@ -79,6 +79,9 @@
                                             <segment title="First"/>
                                             <segment title="Second"/>
                                         </segments>
+                                        <connections>
+                                            <action selector="chooseGenderDidTapped" destination="BYZ-38-t0r" eventType="valueChanged" id="C2F-HU-dXS"/>
+                                        </connections>
                                     </segmentedControl>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="c8M-nD-t2e">
                                         <rect key="frame" x="0.0" y="128.66666666666663" width="361" height="120"/>
@@ -142,6 +145,7 @@
                             <constraint firstItem="X5r-AZ-dmV" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="yUI-QQ-SQy"/>
                         </constraints>
                     </view>
+                    <tabBarItem key="tabBarItem" title="Калькулятор" image="scalemass.fill" catalog="system" id="JXi-Lw-zsc"/>
                     <navigationItem key="navigationItem" title="Калькулятор" id="Y8d-C8-zEK">
                         <barButtonItem key="rightBarButtonItem" image="exclamationmark.circle" catalog="system" id="TW7-fM-PHg">
                             <connections>
@@ -154,6 +158,7 @@
                         <outlet property="bMRForAcivityLabel" destination="Ecw-9S-Pcb" id="zme-dE-3tE"/>
                         <outlet property="bMRForGoal" destination="F3p-Qm-fZo" id="LZH-ZE-FYO"/>
                         <outlet property="bMRLabel" destination="CXe-AI-GdN" id="v0D-Rq-iap"/>
+                        <outlet property="genderSegmentedControl" destination="eyk-Mq-5VM" id="Zgj-aL-U9s"/>
                         <outlet property="goalMenu" destination="2lw-7b-yDm" id="Sn9-mH-HuO"/>
                         <outlet property="growthTextField" destination="yzG-P4-KYv" id="HdW-uf-jFU"/>
                         <outlet property="levelActivityMenu" destination="phV-th-l9N" id="msQ-bk-Bch"/>
@@ -162,7 +167,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3988.5496183206105" y="-82.394366197183103"/>
+            <point key="canvasLocation" x="5271" y="-74"/>
         </scene>
         <!--Ваш результат-->
         <scene sceneID="Wjj-0J-fcH">
@@ -294,7 +299,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qTT-89-7tb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4767.1755725190842" y="275.35211267605638"/>
+            <point key="canvasLocation" x="6056" y="380"/>
         </scene>
         <!--Mifflin-St Jeor-->
         <scene sceneID="bDH-8s-uHG">
@@ -305,7 +310,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="LP4-kO-K6U">
-                                <rect key="frame" x="16" y="175" width="361" height="574"/>
+                                <rect key="frame" x="16" y="175" width="361" height="623"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                 <color key="textColor" systemColor="labelColor"/>
@@ -326,46 +331,9 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="d8I-Xy-fV1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4767" y="-395"/>
+            <point key="canvasLocation" x="6056" y="-302"/>
         </scene>
-        <!--Калькулятор-->
-        <scene sceneID="q0R-de-GjG">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="wcZ-w8-AkS" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Калькулятор" image="scalemass.fill" catalog="system" id="YvE-st-nXS"/>
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" largeTitles="YES" id="j0U-6G-J8n">
-                        <rect key="frame" x="0.0" y="59" width="393" height="96"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="tVK-4X-g6d"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="a7e-qC-eIT" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="3195" y="-82"/>
-        </scene>
-        <!--Tab Bar Controller-->
-        <scene sceneID="MyH-fg-JgY">
-            <objects>
-                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="KfV-Kk-jR2" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="jbU-R5-vVh">
-                        <autoresizingMask key="autoresizingMask"/>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    </tabBar>
-                    <connections>
-                        <segue destination="kHg-fq-ZMu" kind="relationship" relationship="viewControllers" id="U1a-K2-rO5"/>
-                        <segue destination="wcZ-w8-AkS" kind="relationship" relationship="viewControllers" id="Zaf-uH-6Kx"/>
-                    </connections>
-                </tabBarController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="fT8-EH-Q9s" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2416" y="-572"/>
-        </scene>
-        <!--Table View Controller-->
+        <!--Главная-->
         <scene sceneID="SDx-XO-NDV">
             <objects>
                 <tableViewController id="ewq-o9-mfZ" sceneMemberID="viewController">
@@ -388,39 +356,61 @@
                             <outlet property="delegate" destination="ewq-o9-mfZ" id="ac9-Gh-Ndj"/>
                         </connections>
                     </tableView>
+                    <tabBarItem key="tabBarItem" title="Главная" image="house.fill" catalog="system" id="0x9-my-4Sw"/>
                     <navigationItem key="navigationItem" id="AJ0-vW-O6G">
                         <barButtonItem key="leftBarButtonItem" systemItem="edit" id="vAM-7d-Wbq"/>
-                        <barButtonItem key="rightBarButtonItem" image="gearshape" catalog="system" id="iZF-xL-mDa"/>
+                        <rightBarButtonItems>
+                            <barButtonItem image="gearshape" catalog="system" id="iZF-xL-mDa"/>
+                            <barButtonItem systemItem="search" id="Kpn-ku-pxY"/>
+                        </rightBarButtonItems>
                     </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qtK-JD-iEJ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3989" y="-785"/>
+            <point key="canvasLocation" x="5271" y="-825"/>
         </scene>
-        <!--Главная-->
-        <scene sceneID="XDR-0h-XUs">
+        <!--Navigation Controller-->
+        <scene sceneID="etD-GJ-bzZ">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="kHg-fq-ZMu" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Главная" image="person.fill" catalog="system" id="Jhg-gb-k5e"/>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="zfL-1d-oR0" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" largeTitles="YES" id="IHq-4o-Jj1">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" largeTitles="YES" id="Q1q-rj-umZ">
                         <rect key="frame" x="0.0" y="59" width="393" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="ewq-o9-mfZ" kind="relationship" relationship="rootViewController" id="rpK-UY-jdK"/>
+                        <segue destination="fJu-r9-Iyn" kind="relationship" relationship="rootViewController" id="88h-h0-wfk"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="9fD-iL-Hbj" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="XjO-6s-gtR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3195" y="-785"/>
+            <point key="canvasLocation" x="3682" y="-395"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="f1t-R9-InD">
+            <objects>
+                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="fJu-r9-Iyn" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" id="LfF-Ny-Lm0"/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Tdo-9G-SFh">
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="ewq-o9-mfZ" kind="relationship" relationship="viewControllers" id="Gmf-bh-WW5"/>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="viewControllers" id="VfG-DM-Rag"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="P1R-jg-29I" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4489" y="-395"/>
         </scene>
     </scenes>
     <resources>
         <image name="exclamationmark.circle" catalog="system" width="128" height="123"/>
         <image name="gearshape" catalog="system" width="128" height="123"/>
-        <image name="person.fill" catalog="system" width="128" height="120"/>
+        <image name="house.fill" catalog="system" width="128" height="104"/>
         <image name="scalemass.fill" catalog="system" width="128" height="121"/>
         <systemColor name="labelColor">
             <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

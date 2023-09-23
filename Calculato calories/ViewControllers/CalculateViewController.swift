@@ -15,17 +15,11 @@ enum CurrentMenu {
 final class CalculateViewController: UIViewController {
     
     // MARK: - IB Outlets
-    
-    @IBOutlet var bMRLabel: UILabel!
-    @IBOutlet var bMRForAcivityLabel: UILabel!
-    @IBOutlet var bMRForGoal: UILabel!
-    
-    @IBOutlet var maleButton: UIButton!
-    @IBOutlet var femaleButton: UIButton!
-    
     @IBOutlet var ageTextField: UITextField!
     @IBOutlet var weightTextField: UITextField!
     @IBOutlet var growthTextField: UITextField!
+    
+    @IBOutlet var genderSegmentedControl: UISegmentedControl!
     
     @IBOutlet var levelActivityMenu: UIButton!
     @IBOutlet var goalMenu: UIButton!
@@ -49,6 +43,12 @@ final class CalculateViewController: UIViewController {
         levelActivityMenu.layer.cornerRadius = 10
         goalMenu.layer.cornerRadius = 10
         
+    }
+    
+    // MARK: - Touch Handling
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        super.touchesBegan(touches, with: event)
+        view.endEditing(true)
     }
 
     // MARK: - Private Methods
@@ -79,28 +79,24 @@ final class CalculateViewController: UIViewController {
     
     private func showAlert(with title: String, andMessage message: String, textField: UITextField? = nil) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        let okAction = UIAlertAction(title: "OK", style: .default)
+        let okAction = UIAlertAction(title: "OK", style: .default) { _ in
+            textField?.text = ""
+            textField?.becomeFirstResponder()
+        }
         alert.addAction(okAction)
         present(alert,animated: true)
     }
     
     // MARK: - IB Actions
-    @IBAction func chooseGenderDidTapped(_ sender: UIButton) {
-        var newGender: Gender? = nil
-        
-        switch sender {
-        case maleButton:
-            femaleButton.alpha = buttonOf
-            maleButton.alpha = buttonOn
-            newGender = .male
-            updatePerson(gender: newGender)
+    @IBAction func chooseGenderDidTapped() {
+        switch genderSegmentedControl.selectedSegmentIndex {
+        case 0:
+            updatePerson(gender: .male)
         default:
-            maleButton.alpha = buttonOf
-            femaleButton.alpha = buttonOn
-            newGender = .female
-            updatePerson(gender: newGender)
+            updatePerson(gender: .female)
         }
     }
+    
     private func updatePerson(gender: Gender? = nil, goal: Goal? = nil, levelActivity: Activity? = nil, age: Double? = nil, growth: Double? = nil, weight: Double? = nil) {
         if let gender = gender {
             person.gender = gender
@@ -153,10 +149,6 @@ final class CalculateViewController: UIViewController {
         
         // Выполняем расчет
         let result = calculator.getCalculator()
-        
-        bMRLabel.text = String(format: "%.0f", result.levelBasalMetabolic)
-        bMRForAcivityLabel.text = String(format: "%.0f", result.levelBMRForYourActivity)
-        bMRForGoal.text = String(format: "%.0f", result.levelBMRForYourGoal)
         print(result)
     }
     
@@ -164,7 +156,7 @@ final class CalculateViewController: UIViewController {
 
 // MARK: - UI Text Field Delegate
 extension CalculateViewController: UITextFieldDelegate {
-    func resignFirstResponder(_ textField: UITextField) -> Bool {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
     }
     
@@ -173,7 +165,7 @@ extension CalculateViewController: UITextFieldDelegate {
             showAlert(with: "Внимание!", andMessage: "Пожалуйста введите корректное значение.")
             return
         }
-        guard let correctValue = Double(text), (0.0...250.0).contains(correctValue) else {
+        guard let correctValue = Double(text), (0...250).contains(correctValue) else {
             showAlert(with: "Не верный формат!",
                       andMessage: "Пожалуйста в видите число которое соответствует вашим параметрам.",
                       textField: textField
@@ -191,8 +183,24 @@ extension CalculateViewController: UITextFieldDelegate {
         }
     }
     
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        textField.resignFirstResponder()
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        let keyboardToolbar = UIToolbar()
+        keyboardToolbar.sizeToFit()
+        textField.inputAccessoryView = keyboardToolbar
+        
+        let doneButton = UIBarButtonItem(
+            barButtonSystemItem:.done,
+            target: textField,
+            action: #selector(resignFirstResponder)
+        )
+        
+        let flexBarButton = UIBarButtonItem(
+            barButtonSystemItem: .flexibleSpace,
+            target: nil,
+            action: nil
+        )
+        
+        keyboardToolbar.items = [flexBarButton, doneButton]
     }
 }
 
