@@ -7,84 +7,126 @@
 
 import Foundation
 
+struct Person {
+    let name: String
+    let surname: String
+    var gender: Gender
+    var age: Double
+    var weight: Double
+    var height: Double
+    var goal: Goal
+    var levelActivity: Activity
+    var basalMetabolicRate: Double
+    var activityMetabolicRate: Double
+    var goalMetabolicRate: Double
+    var protein: Double
+    var fat: Double
+    var carbohydrate: Double
+    
+    init(
+            name: String = "",
+            surname: String = "",
+            gender: Gender = .male,
+            age: Double = 0.0,
+            weight: Double = 0.0,
+            height: Double = 0.0,
+            goal: Goal = .saveWeight,
+            levelActivity: Activity = .low,
+            basalMetabolicRate: Double = 0.0,
+            activityMetabolicRate: Double = 0.0,
+            goalMetabolicRate: Double = 0.0,
+            protein: Double = 0.0,
+            fat: Double = 0.0,
+            carbohydrate: Double = 0.0
+        ) {
+            self.name = name
+            self.surname = surname
+            self.gender = gender
+            self.age = age
+            self.weight = weight
+            self.height = height
+            self.goal = goal
+            self.levelActivity = levelActivity
+            self.basalMetabolicRate = basalMetabolicRate
+            self.activityMetabolicRate = activityMetabolicRate
+            self.goalMetabolicRate = goalMetabolicRate
+            self.protein = protein
+            self.fat = fat
+            self.carbohydrate = carbohydrate
+        }
+}
+
 struct Calculator {
     let person: Person
     
-    func getCalculator() -> CalculatorResult {
+    static func getCalculator(_ person: Person) -> MetabolicRate {
         
-        var bMR = 0.0
-        var levelBMRForYourGoal = 0.0
+        var basalMetabolicRate = 0.0
+        var metabolicRateForGoal = 0.0
+        var metabolicRateForActivity = 0.0
         
+        var protein = 0.0
+        var fat = 0.0
+        var carbohydrate = 0.0
+        
+        let ageCoefficient = Coefficient.age.rawValue
+        let weightCoefficient = Coefficient.weight.rawValue
+        let heightCoefficient = Coefficient.height.rawValue
         var genderCoefficient = 0.0
-        let weightCoefficient = BMR.weightCoefficient.rawValue
-        let heightCoefficient = BMR.heightCoefficient.rawValue
-        let ageCoefficient = BMR.ageCoefficient.rawValue
-        
+       
         switch person.gender {
         case .male:
             genderCoefficient = Gender.male.rawValue
-            bMR = weightCoefficient * person.weight + heightCoefficient * person.growth - ageCoefficient * person.age + genderCoefficient
+            basalMetabolicRate = weightCoefficient * person.weight + heightCoefficient * person.height - ageCoefficient * person.age + genderCoefficient
         case .female:
             genderCoefficient = Gender.female.rawValue
-            bMR = weightCoefficient * person.weight + heightCoefficient * person.growth - ageCoefficient * person.age - genderCoefficient
+            basalMetabolicRate = weightCoefficient * person.weight + heightCoefficient * person.height - ageCoefficient * person.age - genderCoefficient
         }
         
-        let levelBMRForYourActivity =  bMR * person.levelActivity.rawValue
-        
+        metabolicRateForActivity =  basalMetabolicRate * person.levelActivity.rawValue
         
         switch person.goal {
         case .saveWeight:
-            levelBMRForYourGoal = levelBMRForYourActivity
+            metabolicRateForGoal = metabolicRateForActivity
         case .reduceWeight:
-            levelBMRForYourGoal = levelBMRForYourActivity - (levelBMRForYourActivity * person.goal.rawValue)
+            metabolicRateForGoal = metabolicRateForActivity - (metabolicRateForActivity * person.goal.rawValue)
         case .gainWeight:
-            levelBMRForYourGoal = levelBMRForYourActivity * person.goal.rawValue
+            metabolicRateForGoal = metabolicRateForActivity * person.goal.rawValue
         }
         
-        return CalculatorResult(
-            levelBasalMetabolic: bMR,
-            levelBMRForYourActivity: levelBMRForYourActivity,
-            levelBMRForYourGoal: levelBMRForYourGoal
-        )
+        // Соотношение белков к объему калорий 30%, 1 гр. белка = 4 калория
+        protein = metabolicRateForGoal * 0.30 / 4
+        // Соотношение жиров к объему калорий 30%, 1 гр. жиров = 9 калория
+        fat = metabolicRateForGoal * 0.30 / 9
+        // Соотношение углеводов к объему калорий 30%, 1 гр. углеводов = 4 калория
+        carbohydrate = metabolicRateForGoal * 0.40 / 4
+        
+       let metabolicRates = MetabolicRate(
+        basalMetabolicRate: basalMetabolicRate,
+        activityMetabolicRate: metabolicRateForActivity,
+        goalMetabolicRate: metabolicRateForGoal,
+        protein: protein,
+        fat: fat,
+        carbohydrate: carbohydrate
+       )
+        
+        return metabolicRates
     }
 }
 
-struct CalculatorResult{
-    let levelBasalMetabolic: Double
-    let levelBMRForYourActivity: Double
-    let levelBMRForYourGoal: Double
+struct MetabolicRate {
+    let basalMetabolicRate: Double
+    let activityMetabolicRate: Double
+    let goalMetabolicRate: Double
+    let protein: Double
+    let fat: Double
+    let carbohydrate: Double
 }
 
-struct Person {
-    var name: String
-    var surname: String
-    var gender: Gender
-    var goal: Goal
-    var levelActivity: Activity
-    var age: Double
-    var growth: Double
-    var weight: Double
-    
-    var fullname: String {
-        "\(name) \(surname)"
-    }
-    
-    mutating func update(gender: Gender, goal: Goal, levelActivity: Activity, age: Double, growth: Double, weight: Double) {
-           self.gender = gender
-           self.goal = goal
-           self.levelActivity = levelActivity
-           self.age = age
-           self.growth = growth
-           self.weight = weight
-       }
-    
- 
-}
-
-enum BMR: Double {
-    case weightCoefficient = 10
-    case heightCoefficient = 6.25
-    case ageCoefficient = 5
+enum Coefficient: Double {
+    case weight = 10
+    case height = 6.25
+    case age = 5
 }
 
 enum Gender: Double {
