@@ -76,8 +76,8 @@
                                         <rect key="frame" x="0.0" y="77.666666666666629" width="361" height="32"/>
                                         <color key="backgroundColor" red="0.63115757679999995" green="0.48120359460000001" blue="0.74678365570000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <segments>
-                                            <segment title="First"/>
-                                            <segment title="Second"/>
+                                            <segment title="Мужчина"/>
+                                            <segment title="Женщина"/>
                                         </segments>
                                         <connections>
                                             <action selector="chooseGenderDidTapped" destination="BYZ-38-t0r" eventType="valueChanged" id="C2F-HU-dXS"/>
@@ -94,11 +94,11 @@
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" showsMenuAsPrimaryAction="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="phV-th-l9N">
                                                 <rect key="frame" x="0.0" y="26" width="361" height="30"/>
-                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <color key="backgroundColor" red="0.63115757679999995" green="0.48120359460000001" blue="0.74678365570000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                 <state key="normal" title="Выберите вариант">
-                                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
                                                 <connections>
                                                     <action selector="chooseLevelActivityDidTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Gzi-S5-LbO"/>
@@ -112,10 +112,10 @@
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" showsMenuAsPrimaryAction="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2lw-7b-yDm">
                                                 <rect key="frame" x="0.0" y="90" width="361" height="30"/>
-                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <color key="backgroundColor" red="0.63115757679999995" green="0.48120359460000001" blue="0.74678365570000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                 <state key="normal" title="Выберите вариант">
-                                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
                                                 <connections>
                                                     <action selector="chooseGoalDidTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Pzr-Yu-zO0"/>
@@ -130,7 +130,7 @@
                                             <color key="baseBackgroundColor" red="0.63115757679999995" green="0.48120359460000001" blue="0.74678365570000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         </buttonConfiguration>
                                         <connections>
-                                            <action selector="calculateButtonDidTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="XGS-Ly-P3t"/>
+                                            <action selector="calculateButtonDidTapped" destination="BYZ-38-t0r" eventType="touchUpInside" id="IEP-ZI-CHH"/>
                                             <segue destination="zwB-Qx-kQC" kind="show" id="Ppg-4z-3Ea"/>
                                         </connections>
                                     </button>
@@ -155,9 +155,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="ageTextField" destination="Cmi-dU-Jql" id="R8p-zK-glW"/>
-                        <outlet property="bMRForAcivityLabel" destination="Ecw-9S-Pcb" id="zme-dE-3tE"/>
-                        <outlet property="bMRForGoal" destination="F3p-Qm-fZo" id="LZH-ZE-FYO"/>
-                        <outlet property="bMRLabel" destination="CXe-AI-GdN" id="v0D-Rq-iap"/>
+                        <outlet property="calculatorButton" destination="h0G-ZT-Yep" id="c5M-Lp-njS"/>
                         <outlet property="genderSegmentedControl" destination="eyk-Mq-5VM" id="Zgj-aL-U9s"/>
                         <outlet property="goalMenu" destination="2lw-7b-yDm" id="Sn9-mH-HuO"/>
                         <outlet property="growthTextField" destination="yzG-P4-KYv" id="HdW-uf-jFU"/>
@@ -172,7 +170,7 @@
         <!--Ваш результат-->
         <scene sceneID="Wjj-0J-fcH">
             <objects>
-                <viewController id="zwB-Qx-kQC" sceneMemberID="viewController">
+                <viewController id="zwB-Qx-kQC" customClass="ResultViewController" customModule="Calculato_calories" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="NXJ-9Z-sm0">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -296,6 +294,14 @@
                     <navigationItem key="navigationItem" title="Ваш результат" id="uu6-bj-yHl">
                         <barButtonItem key="rightBarButtonItem" title="Сохранить" id="cfk-Gc-lJD"/>
                     </navigationItem>
+                    <connections>
+                        <outlet property="activityMetabolicLabel" destination="Ecw-9S-Pcb" id="YNJ-Xg-1Y3"/>
+                        <outlet property="basalMetabolicLabel" destination="CXe-AI-GdN" id="bBN-Xd-DU9"/>
+                        <outlet property="carbohydrate" destination="i7r-bv-Jxf" id="Ygu-VB-Ybu"/>
+                        <outlet property="fatLabel" destination="80l-TW-U63" id="RDV-FO-bJb"/>
+                        <outlet property="goalMetabolicLabel" destination="F3p-Qm-fZo" id="SSw-8C-GVI"/>
+                        <outlet property="proteinLabel" destination="y7l-oG-SDW" id="afJ-hv-ANC"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qTT-89-7tb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -394,6 +400,7 @@
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="LfF-Ny-Lm0"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Tdo-9G-SFh">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
