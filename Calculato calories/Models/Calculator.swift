@@ -7,9 +7,9 @@
 
 import Foundation
 
-struct Person {
-    let name: String
-    let surname: String
+struct Person: Codable {
+    var name: String
+    var surname: String
     var gender: Gender
     var age: Double
     var weight: Double
@@ -22,6 +22,11 @@ struct Person {
     var protein: Double
     var fat: Double
     var carbohydrate: Double
+    var date: Date
+    
+    var fullName: String {
+       "\(name) \(surname)"
+    }
     
     init(
             name: String = "",
@@ -37,7 +42,8 @@ struct Person {
             goalMetabolicRate: Double = 0.0,
             protein: Double = 0.0,
             fat: Double = 0.0,
-            carbohydrate: Double = 0.0
+            carbohydrate: Double = 0.0,
+            date: Date = Date()
         ) {
             self.name = name
             self.surname = surname
@@ -53,6 +59,7 @@ struct Person {
             self.protein = protein
             self.fat = fat
             self.carbohydrate = carbohydrate
+            self.date = date
         }
 }
 
@@ -129,12 +136,12 @@ enum Coefficient: Double {
     case age = 5
 }
 
-enum Gender: Double {
+enum Gender: Double, Codable {
     case male = 5
     case female = 161
 }
 
-enum Activity: Double, CaseIterable {
+enum Activity: Double, CaseIterable, Codable {
     case low = 1.2
     case medium = 1.375
     case high = 1.465
@@ -151,7 +158,7 @@ enum Activity: Double, CaseIterable {
     }
 }
 
-enum Goal: Double, CaseIterable {
+enum Goal: Double, CaseIterable, Codable {
     case saveWeight = 0.0
     case reduceWeight = 0.20
     case gainWeight = 1.20
