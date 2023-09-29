@@ -132,7 +132,7 @@
                                         </buttonConfiguration>
                                         <connections>
                                             <action selector="calculateButtonDidTapped" destination="BYZ-38-t0r" eventType="touchUpInside" id="IEP-ZI-CHH"/>
-                                            <segue destination="zwB-Qx-kQC" kind="show" id="Ppg-4z-3Ea"/>
+                                            <segue destination="zwB-Qx-kQC" kind="presentation" id="Ppg-4z-3Ea"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -167,16 +167,16 @@
             </objects>
             <point key="canvasLocation" x="6101" y="-75"/>
         </scene>
-        <!--Ваш результат-->
+        <!--Result View Controller-->
         <scene sceneID="Wjj-0J-fcH">
             <objects>
                 <viewController id="zwB-Qx-kQC" customClass="ResultViewController" customModule="Calculato_calories" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="NXJ-9Z-sm0">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="548"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="Bpe-2j-LXC">
-                                <rect key="frame" x="16" y="251" width="288" height="180"/>
+                                <rect key="frame" x="16" y="239" width="288" height="180"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="E0H-fD-E6w">
                                         <rect key="frame" x="0.0" y="0.0" width="288" height="98"/>
@@ -283,7 +283,7 @@
                                 </subviews>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="5kB-mk-lzY">
-                                <rect key="frame" x="16" y="145" width="288" height="76"/>
+                                <rect key="frame" x="16" y="133" width="288" height="76"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Имя" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5Sa-78-yUF">
                                         <rect key="frame" x="0.0" y="0.0" width="288" height="34"/>
@@ -297,6 +297,24 @@
                                     </textField>
                                 </subviews>
                             </stackView>
+                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="07k-SF-WNe">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <items>
+                                    <navigationItem title="Результат" id="uu6-bj-yHl">
+                                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="0J5-0Y-qJH">
+                                            <connections>
+                                                <action selector="cancelButtonPressed" destination="zwB-Qx-kQC" id="gLa-0x-mTc"/>
+                                            </connections>
+                                        </barButtonItem>
+                                        <barButtonItem key="rightBarButtonItem" title="Save" id="cfk-Gc-lJD">
+                                            <connections>
+                                                <action selector="saveButtonPressed:" destination="zwB-Qx-kQC" id="gSn-YE-RhJ"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="GvF-6g-yuT"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -309,16 +327,16 @@
                             <constraint firstItem="GvF-6g-yuT" firstAttribute="trailing" secondItem="5kB-mk-lzY" secondAttribute="trailing" constant="16" id="vjt-P0-hgl"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Ваш результат" id="uu6-bj-yHl">
-                        <barButtonItem key="rightBarButtonItem" title="Сохранить" id="cfk-Gc-lJD"/>
-                    </navigationItem>
                     <connections>
                         <outlet property="activityMetabolicLabel" destination="Ecw-9S-Pcb" id="YNJ-Xg-1Y3"/>
                         <outlet property="basalMetabolicLabel" destination="CXe-AI-GdN" id="bBN-Xd-DU9"/>
                         <outlet property="carbohydrate" destination="i7r-bv-Jxf" id="Ygu-VB-Ybu"/>
                         <outlet property="fatLabel" destination="80l-TW-U63" id="RDV-FO-bJb"/>
                         <outlet property="goalMetabolicLabel" destination="F3p-Qm-fZo" id="SSw-8C-GVI"/>
+                        <outlet property="nameTextField" destination="5Sa-78-yUF" id="Lby-0h-uAa"/>
                         <outlet property="proteinLabel" destination="y7l-oG-SDW" id="afJ-hv-ANC"/>
+                        <outlet property="saveButton" destination="cfk-Gc-lJD" id="D7v-87-K7F"/>
+                        <outlet property="surnameTextField" destination="w3e-wU-ign" id="VEU-13-0rl"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qTT-89-7tb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -336,7 +354,7 @@
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="3Yc-yH-nkM">
                                 <rect key="frame" x="16" y="112.5" width="288" height="406.5"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <mutableString key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda. Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</mutableString>
+                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda. Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                 <color key="textColor" systemColor="labelColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -360,7 +378,7 @@
         <!--Клиенты-->
         <scene sceneID="SDx-XO-NDV">
             <objects>
-                <tableViewController id="ewq-o9-mfZ" sceneMemberID="viewController">
+                <tableViewController id="ewq-o9-mfZ" customClass="ProfileViewController" customModule="Calculato_calories" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="wfH-Tp-yKS">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -418,10 +436,26 @@
                     <view key="view" contentMode="scaleToFill" id="Dtp-9j-Z5B">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fTP-3H-lRr">
+                                <rect key="frame" x="16" y="132.5" width="288" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="VQc-fc-KL0"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="fTP-3H-lRr" firstAttribute="top" secondItem="VQc-fc-KL0" secondAttribute="top" constant="20" id="ORL-08-XIx"/>
+                            <constraint firstItem="VQc-fc-KL0" firstAttribute="trailing" secondItem="fTP-3H-lRr" secondAttribute="trailing" constant="16" id="suy-Es-SuB"/>
+                            <constraint firstItem="fTP-3H-lRr" firstAttribute="leading" secondItem="VQc-fc-KL0" secondAttribute="leading" constant="16" id="yTV-NR-LFK"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="zKR-fa-TSI"/>
+                    <connections>
+                        <outlet property="bioPersonLabel" destination="fTP-3H-lRr" id="kOj-VM-TNq"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="G3s-og-9fx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
