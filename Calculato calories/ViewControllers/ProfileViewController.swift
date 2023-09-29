@@ -18,9 +18,9 @@ final class ProfileViewController: UITableViewController {
     private let storageManager = StorageManager.shared
     
     // MARK: - View Life Cycles
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    override func viewDidAppear(_ animated: Bool) {
         persons = storageManager.fetchPersons()
+        tableView.reloadData()
     }
     
     // MARK: - UITAbleViewDataSource
