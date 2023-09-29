@@ -99,11 +99,11 @@
 		60C7D6802A9F91DA004C31F3 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				60C7D67C2A9F7E47004C31F3 /* ProfileViewController.swift */,
-				60C7D66C2A9F58EE004C31F3 /* CalculateViewController.swift */,
 				60C7D67E2A9F83A0004C31F3 /* TabBarViewController.swift */,
-				6062FFC02AC091C600C4F91F /* ResultViewControllers.swift */,
+				60C7D67C2A9F7E47004C31F3 /* ProfileViewController.swift */,
 				607606782AC5BC47002FD614 /* DetailsViewController.swift */,
+				60C7D66C2A9F58EE004C31F3 /* CalculateViewController.swift */,
+				6062FFC02AC091C600C4F91F /* ResultViewControllers.swift */,
 				6076067A2AC5C65B002FD614 /* FormulaViewController.swift */,
 			);
 			path = ViewControllers;
