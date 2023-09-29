@@ -47,6 +47,7 @@ final class CalculateViewController: UIViewController {
         view.endEditing(true)
     }
     
+    // MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let resultVC = segue.destination as? ResultViewController else { return }
         resultVC.person = person
@@ -117,7 +118,7 @@ final class CalculateViewController: UIViewController {
         person.carbohydrate = calculator.carbohydrate
     }
 }
-// MARK: - UI Text Field Delegate
+// MARK: - UITextFieldDelegate
 extension CalculateViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
