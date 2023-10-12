@@ -139,6 +139,15 @@ enum Coefficient: Double {
 enum Gender: Double, Codable {
     case male = 5
     case female = 161
+    
+    var definition: String {
+        switch self {
+        case .male:
+            return "Мужчина"
+        case .female:
+            return "Женщина"
+        }
+    }
 }
 
 enum Activity: Double, CaseIterable, Codable {

@@ -63,14 +63,14 @@ final class CalculateViewController: UIViewController {
             actions = Activity.allCases.map { activity in
                 UIAction(title: activity.definition) { [weak self] _ in
                     self?.levelActivityMenu.setTitle(activity.definition, for: .normal)
-                    self?.person.levelActivity = activity
+//                    self?.person.levelActivity = activity
                 }
             }
         case .goalMenu:
             actions = Goal.allCases.map { goal in
                 UIAction(title: goal.definition) { [weak self] _ in
                     self?.goalMenu.setTitle(goal.definition, for: .normal)
-                    self?.person.goal = goal
+//                    self?.person.goal = goal
                 }
             }
         }
