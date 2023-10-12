@@ -35,7 +35,7 @@ final class DetailsViewController: UIViewController {
         heightLabel.text = "Рост: \(person.height) см."
         
         goalLabel.text = "Текущая цель: \(person.goal.definition)"
-        levelActivityLabel.text = "Уровень активности: \(person.levelActivity.definition)"
+        levelActivityLabel.text = "Уровень активности: \(person.activity.definition)"
         
         basalMetabolicRateLabel.text = "Базовый объем ккал: \(person.basalMetabolicRate)"
         metabolicRateForGoalLabel.text = "Ккал. под цель: \(person.goalMetabolicRate)"

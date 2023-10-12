@@ -15,7 +15,7 @@ struct Person: Codable {
     var weight: Double
     var height: Double
     var goal: Goal
-    var levelActivity: Activity
+    var activity: Activity
     var basalMetabolicRate: Double
     var activityMetabolicRate: Double
     var goalMetabolicRate: Double
@@ -52,7 +52,7 @@ struct Person: Codable {
             self.weight = weight
             self.height = height
             self.goal = goal
-            self.levelActivity = levelActivity
+            self.activity = levelActivity
             self.basalMetabolicRate = basalMetabolicRate
             self.activityMetabolicRate = activityMetabolicRate
             self.goalMetabolicRate = goalMetabolicRate
@@ -67,30 +67,21 @@ struct Calculator {
     let person: Person
     
     static func getCalculator(_ person: Person) -> MetabolicRate {
+        let coeffAge = Coefficient.age.rawValue
+        let coeffWeight = Coefficient.weight.rawValue
+        let coeffHeight = Coefficient.height.rawValue
         
-        var basalMetabolicRate = 0.0
         var metabolicRateForGoal = 0.0
-        var metabolicRateForActivity = 0.0
-        
-        var protein = 0.0
-        var fat = 0.0
-        var carbohydrate = 0.0
-        
-        let ageCoefficient = Coefficient.age.rawValue
-        let weightCoefficient = Coefficient.weight.rawValue
-        let heightCoefficient = Coefficient.height.rawValue
-        var genderCoefficient = 0.0
+        var basalMetabolicRate = 0.0
        
         switch person.gender {
         case .male:
-            genderCoefficient = Gender.male.rawValue
-            basalMetabolicRate = weightCoefficient * person.weight + heightCoefficient * person.height - ageCoefficient * person.age + genderCoefficient
+            basalMetabolicRate = coeffWeight * person.weight + coeffHeight * person.height - coeffAge * person.age + person.gender.rawValue
         case .female:
-            genderCoefficient = Gender.female.rawValue
-            basalMetabolicRate = weightCoefficient * person.weight + heightCoefficient * person.height - ageCoefficient * person.age - genderCoefficient
+            basalMetabolicRate = coeffWeight * person.weight + coeffHeight * person.height - coeffAge * person.age - person.gender.rawValue
         }
         
-        metabolicRateForActivity =  basalMetabolicRate * person.levelActivity.rawValue
+        let metabolicRateForActivity =  basalMetabolicRate * person.activity.rawValue
         
         switch person.goal {
         case .saveWeight:
@@ -102,11 +93,11 @@ struct Calculator {
         }
         
         // Соотношение белков к объему калорий 30%, 1 гр. белка = 4 калория
-        protein = metabolicRateForGoal * 0.30 / 4
+        let protein = metabolicRateForGoal * 0.30 / 4
         // Соотношение жиров к объему калорий 30%, 1 гр. жиров = 9 калория
-        fat = metabolicRateForGoal * 0.30 / 9
-        // Соотношение углеводов к объему калорий 30%, 1 гр. углеводов = 4 калория
-        carbohydrate = metabolicRateForGoal * 0.40 / 4
+        let fat = metabolicRateForGoal * 0.30 / 9
+        // Соотношение углеводов к объему калорий 40%, 1 гр. углеводов = 4 калория
+        let carbohydrate = metabolicRateForGoal * 0.40 / 4
         
        let metabolicRates = MetabolicRate(
         basalMetabolicRate: basalMetabolicRate,

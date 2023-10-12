@@ -37,8 +37,8 @@ final class CalculateViewController: UIViewController {
         weightTextField.delegate = self
         growthTextField.delegate = self
         
-        levelActivityMenu.layer.cornerRadius = 10
-        goalMenu.layer.cornerRadius = 10
+        levelActivityMenu.layer.cornerRadius = 5
+        goalMenu.layer.cornerRadius = 5
     }
     
     // MARK: - Touch Handling
@@ -63,14 +63,14 @@ final class CalculateViewController: UIViewController {
             actions = Activity.allCases.map { activity in
                 UIAction(title: activity.definition) { [weak self] _ in
                     self?.levelActivityMenu.setTitle(activity.definition, for: .normal)
-//                    self?.person.levelActivity = activity
+                    self?.person.activity = activity
                 }
             }
         case .goalMenu:
             actions = Goal.allCases.map { goal in
                 UIAction(title: goal.definition) { [weak self] _ in
                     self?.goalMenu.setTitle(goal.definition, for: .normal)
-//                    self?.person.goal = goal
+                    self?.person.goal = goal
                 }
             }
         }
@@ -116,6 +116,8 @@ final class CalculateViewController: UIViewController {
         person.protein = calculator.protein
         person.fat = calculator.fat
         person.carbohydrate = calculator.carbohydrate
+        
+        print(person)
     }
 }
 // MARK: - UITextFieldDelegate
