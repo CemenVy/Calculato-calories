@@ -375,7 +375,7 @@
             </objects>
             <point key="canvasLocation" x="6913" y="-288"/>
         </scene>
-        <!--Клиенты-->
+        <!--Profile View Controller-->
         <scene sceneID="SDx-XO-NDV">
             <objects>
                 <tableViewController id="ewq-o9-mfZ" customClass="ProfileViewController" customModule="Calculato_calories" customModuleProvider="target" sceneMemberID="viewController">
@@ -417,7 +417,7 @@
                             <outlet property="delegate" destination="ewq-o9-mfZ" id="ac9-Gh-Ndj"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Клиенты" id="AJ0-vW-O6G">
+                    <navigationItem key="navigationItem" id="AJ0-vW-O6G">
                         <barButtonItem key="leftBarButtonItem" systemItem="edit" id="vAM-7d-Wbq"/>
                         <rightBarButtonItems>
                             <barButtonItem image="gearshape" catalog="system" id="iZF-xL-mDa"/>
@@ -571,7 +571,7 @@
                     <tabBarItem key="tabBarItem" title="Главная" image="house.fill" catalog="system" id="0x9-my-4Sw"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" largeTitles="YES" id="9gK-SC-4RD">
-                        <rect key="frame" x="0.0" y="20" width="320" height="98.5"/>
+                        <rect key="frame" x="0.0" y="20" width="320" height="92.5"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -590,7 +590,7 @@
                     <tabBarItem key="tabBarItem" title="Калькулятор" image="scalemass.fill" catalog="system" id="JXi-Lw-zsc"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" largeTitles="YES" id="hrd-ty-ge8">
-                        <rect key="frame" x="0.0" y="20" width="320" height="98.5"/>
+                        <rect key="frame" x="0.0" y="20" width="320" height="92.5"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -612,7 +612,7 @@
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="opaqueSeparatorColor">
-            <color red="0.77647058823529413" green="0.77647058823529413" blue="0.78431372549019607" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.77647058820000003" green="0.77647058820000003" blue="0.7843137255" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
