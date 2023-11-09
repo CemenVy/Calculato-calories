@@ -23,13 +23,10 @@ final class CalculateViewController: UIViewController {
     
     @IBOutlet var levelActivityMenu: UIButton!
     @IBOutlet var goalMenu: UIButton!
+    @IBOutlet var calculatorButton: UIButton!
     
     // MARK: - Private Properties
-    private var person = Person(gender: .male, goal: .gainWeight, levelActivity: .high, age: 0, growth: 0, weight: 0)
-    
-    private let buttonOn: CGFloat = 1
-    private let buttonOf: CGFloat = 0.3
-    
+    private var person = Person()
     private var currentMenu: CurrentMenu = .activityMenu
     
     // MARK: - View Life Cycles
@@ -40,9 +37,8 @@ final class CalculateViewController: UIViewController {
         weightTextField.delegate = self
         growthTextField.delegate = self
         
-        levelActivityMenu.layer.cornerRadius = 10
-        goalMenu.layer.cornerRadius = 10
-        
+        levelActivityMenu.layer.cornerRadius = 5
+        goalMenu.layer.cornerRadius = 5
     }
     
     // MARK: - Touch Handling
@@ -50,7 +46,13 @@ final class CalculateViewController: UIViewController {
         super.touchesBegan(touches, with: event)
         view.endEditing(true)
     }
-
+    
+    // MARK: - Navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard let resultVC = segue.destination as? ResultViewController else { return }
+        resultVC.person = person
+    }
+    
     // MARK: - Private Methods
     private func createMenu(for currentMenu: CurrentMenu) -> UIMenu? {
         let menuTitle = "Выберите вариант"
@@ -61,14 +63,14 @@ final class CalculateViewController: UIViewController {
             actions = Activity.allCases.map { activity in
                 UIAction(title: activity.definition) { [weak self] _ in
                     self?.levelActivityMenu.setTitle(activity.definition, for: .normal)
-                    self?.updatePerson(levelActivity: activity)
+                    self?.person.activity = activity
                 }
             }
         case .goalMenu:
             actions = Goal.allCases.map { goal in
                 UIAction(title: goal.definition) { [weak self] _ in
                     self?.goalMenu.setTitle(goal.definition, for: .normal)
-                    self?.updatePerson(goal: goal)
+                    self?.person.goal = goal
                 }
             }
         }
@@ -91,33 +93,12 @@ final class CalculateViewController: UIViewController {
     @IBAction func chooseGenderDidTapped() {
         switch genderSegmentedControl.selectedSegmentIndex {
         case 0:
-            updatePerson(gender: .male)
+            person.gender = .male
         default:
-            updatePerson(gender: .female)
+            person.gender = .female
         }
     }
     
-    private func updatePerson(gender: Gender? = nil, goal: Goal? = nil, levelActivity: Activity? = nil, age: Double? = nil, growth: Double? = nil, weight: Double? = nil) {
-        if let gender = gender {
-            person.gender = gender
-        }
-        if let goal = goal {
-            person.goal = goal
-        }
-        if let levelActivity = levelActivity {
-            person.levelActivity = levelActivity
-        }
-        if let age = age {
-            person.age = age
-        }
-        if let growth = growth {
-            person.growth = growth
-        }
-        if let weight = weight {
-            person.weight = weight
-        }
-    }
-        
     @IBAction func chooseLevelActivityDidTapped(_ sender: UIButton) {
         sender.menu = createMenu(for: .activityMenu)
         
@@ -127,34 +108,19 @@ final class CalculateViewController: UIViewController {
         sender.menu = createMenu(for: .goalMenu)
     }
     
-    @IBAction func calculateButtonDidTapped(_ sender: UIButton) {
-
+    @IBAction func calculateButtonDidTapped() {
+        let calculator = Calculator.getCalculator(person)
+        person.basalMetabolicRate = calculator.basalMetabolicRate
+        person.activityMetabolicRate = calculator.activityMetabolicRate
+        person .goalMetabolicRate = calculator.goalMetabolicRate
+        person.protein = calculator.protein
+        person.fat = calculator.fat
+        person.carbohydrate = calculator.carbohydrate
         
-//        Проверяем, выбраны ли цель и активность
-//        guard let selectedGoal = person.goal else {
-//            showAlert(with: "Ошибка", andMessage: "Пожалуйста, выберите цель перед расчетом.")
-//            return
-//       }
-//        guard let selectedActivity = person.levelActivity else {
-//            showAlert(with: "Ошибка", andMessage: "Пожалуйста, выберите уровень активности перед расчетом.")
-//            return
-//        }
-//        guard let selectedGender = person.gender else {
-//            showAlert(with: "Ошибка", andMessage: "Пожалуйста, выберите пол перед расчетом.")
-//            return
-//        }
-        
-        // Создаем объект Calculator с новым Person
-        let calculator = Calculator(person: person)
-        
-        // Выполняем расчет
-        let result = calculator.getCalculator()
-        print(result)
+        print(person)
     }
-    
 }
-
-// MARK: - UI Text Field Delegate
+// MARK: - UITextFieldDelegate
 extension CalculateViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
@@ -175,11 +141,11 @@ extension CalculateViewController: UITextFieldDelegate {
         
         switch textField {
         case ageTextField:
-            updatePerson(age: correctValue)
+            person.age = correctValue
         case weightTextField:
-            updatePerson(weight: correctValue)
+            person.weight = correctValue
         default:
-            updatePerson(growth: correctValue)
+            person.height = correctValue
         }
     }
     
